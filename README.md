@@ -62,3 +62,38 @@ S: It sort of like at last resolve when a predetor identifies the octopus
 The octopus releases inc in a cloud, sometimes even shutting a stream of it into the face of the predetor.
 P: And this is what makes the octopus a true escaper.
 That inc contains a substance that affects the or factory organs of the predetors, so that it can't use its sense of smell to locate the escaping octopus.
+
+
+There are various qualities required to do a group project well or work as a team effectively.
+Which of the following do you think is the most important attribute of members of a group or team?
+- the ability to complete tasks on schdule
+- the capacity to come up with new and creative ideas
+- an outgoing personality that makes a team get along with
+Use specific reasons and examples to support your idea.
+
+Some people think that the ability creating impressive ideas or an outgoing characteristic that strengthen bonds of a team is the most important part of sucessful teamwork.
+However, in my opinion, the ability to complete tasks on schdule is the best way to work as a team effectively.
+The reason are that by doing these way, all people don't violate the scheduled time and this ability is crucial value for working with others.
+
+To begin with, completion of tasks on time make people don't break the time on which given tasks have to be done.
+If all people have attribute to finish work on time, one person respectively make an effort not to over the required time.
+This attributes give a plus energy to the team work.
+As a result, it affects the sucess of the work.
+Let's take the example of my university year.
+There was a term project which has to be finished in group.
+Because all of the team member 
+
+
+일정대로 업무 완성하는 능력
+이유1: 기한 내에 완성 -> 모두 자신의 업무 시간을 어기지 x
+일반적 진술
+함계 일할 때 업무들 나누어짐, 모두 시간을 어기지 x -> 일의 성공에 영향
+예시
+친구들과 나는 많은 시간이 없었지만, 모두가 예정대로 업무를 한 덕분에 완성했음
+
+이유2: 다른 이들과 원만하게 일하기 위해 필수적인 자질임
+일반적 진술
+시간을 엄수하지 않는 구성원은 다른 구성원들을 힘들게 함
+예시
+동료는 절대 예정된 대로 하지 않아서, 사람들은 어려움을 겪었고
+그와 함께 일하는 것이 불쾌하다는 것을 깨달음
