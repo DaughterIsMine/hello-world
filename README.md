@@ -31,7 +31,8 @@ Intensity = np.abs(Addition)
 
 fft_result = np.fft.fft(Intensity)
 fft_result = fft_result[0:int(time_length / 2)]
-frequency_range = fs * np.arange(0, int(time_length / 2))
+frequency_range = fs / 2 * np.linspace(0, 1, int(time_length / 2))
 
+print('beat frequency =', frequency_range[np.argmax(abs(fft_result[1:])) + 1], 'Hz')
 plt.plot(frequency_range[1:], abs(fft_result[1:]))
 plt.show()
