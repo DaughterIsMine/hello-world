@@ -1,5 +1,114 @@
 # hello-world
+
+import numpy as np
+from matplotlib import pyplot as plt
+
+def coupler_2_2(lo_form, signal_form):
+    coupler_matrix = np.array([[1 / np.sqrt(2), 1 / np.sqrt(2) * np.exp(1j * np.pi / 2)],
+                               [1 / np.sqrt(2) * np.exp(1j * np.pi / 2), 1 / np.sqrt(2)]])
+
+# shot noise by photon
+def shot_noise(optical_power, responsivity, bandwidth, source_length, quantum = False, optical_frequency = 1550, quantum_efficiency = 1):
+    h = 6.626e-34   # Planck constant
+    e = 1.602e-19   # electron charge [C] = [A] x [sec]
+
+    if quantum:
+        mean_photon_flux = optical_power / (h * optical_frequency)
+        mean_photon_electron = quantum_efficiency * mean_photon_flux
+        mean_photo_current = np.sqrt(2 * e * bandwidth * mean_photon_electron)
+    elif not quantum:
+        mean_photo_current = np.sqrt(2 * e * responsivity * optical_power * bandwidth)
+
+    shot_noise_variable = np.random.normal(mean_photo_current, mean_photo_current, source_length) # due to central limit theorem (normal = poisson)
+
+    return shot_noise_variable, mean_photo_current
+
+# thermal noise by resister
+def thermal_noise(temperature, resistance, bandwidth, source_length):
+    k = 1.381e-23   # Boltzmann constant
+    absolute_temperature = temperature + 273.15
+
+    thermal_variance = 4 * k * absolute_temperature * bandwidth / resistance
+
+    thermal_noise_variable = np.random.normal(0, np.sqrt(thermal_variance), source_length)
+
+    return thermal_noise_variable, np.sqrt(thermal_variance)
+
+# dark_current_noise
+def dark_current_noise(bandwidth, source_length, material = 'ingaas'):
+    e = 1.602e-19  # electron charge [C] = [A] x [sec]
+
+    if material == 'ingaas':
+        dark_current = 1e-9
+
+    mean_dark_current = np.sqrt(2 * e * dark_current * bandwidth)
+
+    dark_noise = np.random.normal(mean_dark_current, mean_dark_current, source_length) # due to central limit theorem (normal = poisson)
+
+    return dark_noise, mean_dark_current
+
+# background_noise
+def background_noise(bandwidth, source_length, material = 'ingaas'):
+    e = 1.602e-19  # electron charge [C] = [A] x [sec]
+
+    if material == 'ingaas':
+        dark_current = 1e-9
+
+    mean_dark_current = np.sqrt(2 * e * dark_current * bandwidth)
+
+    dark_noise = np.random.normal(mean_dark_current, mean_dark_current, source_length) # due to central limit theorem (normal = poisson)
+
+    return dark_noise
+
+if __name__ == "__main__":
+    responsivity = 1
+    optical_power = 1
+    c = 3e8
+    center_wavelength = 1550e-9
+    optical_frequency = c / center_wavelength
+    bandwidth = 2500000
+    source_length = 100 * 10
+    resistance = 50
+    temperature = 25
+    sampling_frequency = 500e6
+
+    x = shot_noise(optical_power * 100, responsivity, bandwidth, source_length)[0]
+
+    plt.figure()
+    plt.subplot(2,1,1)
+    plt.plot(shot_noise(optical_power * 100, responsivity, bandwidth, source_length)[0] +
+             shot_noise(optical_power, responsivity, bandwidth, source_length)[0] + dark_current_noise(bandwidth, source_length)[0])
+    plt.subplot(2,1,2)
+    plt.plot(thermal_noise(temperature, resistance, bandwidth, source_length)[0])
+
+
+    fft_result = np.fft.fft(x) / source_length
+    fft_result = fft_result[0:int(source_length/ 2)]
+    frequency_range = sampling_frequency / 2 * np.linspace(0, 1, int(source_length / 2))
+
+    plt.figure()
+    plt.plot(frequency_range[1:], abs(fft_result[1:]))
+    plt.title('fft result')
+    plt.xlabel('frequency[Hz]')
+
+
+    plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
 Just introduction of git-hub
+
+
 
 Hi, I'm Ingyu Jang!
 
